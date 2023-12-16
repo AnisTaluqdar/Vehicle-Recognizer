@@ -41,7 +41,7 @@ The types are following:
 **Data Cleaning:** This part took the highest time. Since I collected data from browser, there were many noises. Also, there were images that contained. I cleaned and updated data using fastai ImageClassifierCleaner. I cleaned the data each time after training or finetuning, except for the last time which was the final iteration of the model. <br/>
 
 # Model Deployment
-I deployed to model to HuggingFace Spaces Gradio App. The implementation can be found in [here](https://huggingface.co/spaces/anistaluqdar/Vehicle-Recognizer). <br/>
+I deployed to model to HuggingFace Spaces Gradio App. The implementation can be found[here](https://huggingface.co/spaces/anistaluqdar/Vehicle-Recognizer). <br/>
 <img src = "Screenshot.png" width="700" height="350">
 
 # API integration with GitHub Pages
