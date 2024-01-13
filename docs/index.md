@@ -1,3 +1,8 @@
+---
+title: Home
+layout: page
+---
+
 # Vehicle-Recognizer
 The goal of this project is to classify 28 different types of vehicle commonly around the world.
 The types are following:
