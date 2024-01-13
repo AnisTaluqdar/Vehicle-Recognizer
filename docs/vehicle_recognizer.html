@@ -11,11 +11,6 @@ layout: page
         const app = await client("https://anistaluqdar-vehicle-recognizer.hf.space/--replicas/86pln/");
         const response = await app.predict("/predict", [reader.result]);
         console.log(response);
-<<<<<<< HEAD
-=======
-        // const json = await response.json();
-        // const label = json['data'][0]['label'];
->>>>>>> 4494f25363914a7729218b1cb21c872d16d05102
         const label = response['data'][0]['label'];
         results.innerHTML = `<br/> <img src = "${reader.result}" width="500"> <p>${label}</p>`;
     }
@@ -26,11 +21,3 @@ layout: page
     }
     photo.addEventListener('input', read);
 </script>
-<<<<<<< HEAD
-=======
-
-
-
-
-
->>>>>>> 4494f25363914a7729218b1cb21c872d16d05102
