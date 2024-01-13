@@ -1,4 +1,4 @@
-remote_theme: "orderedlist/minimal"
+remote_theme: daviddarnes/alembic@main
 plugins:
   - jekyll-remote-theme
 
@@ -34,3 +34,5 @@ theme:
   header:
     background: "#2c3e50" # Change this to your preferred header background color
     text_color: "#ffffff" # Change this to your preferred header text color
+
+
