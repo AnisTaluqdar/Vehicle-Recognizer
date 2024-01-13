@@ -3,21 +3,63 @@ title: Vehicle Recognizer
 layout: page
 ---
 
-<input id="photo" type="file">
-<div id="results"></div>
-<script type="module">
-    import { client } from "https://cdn.jsdelivr.net/npm/@gradio/client@0.1.4/dist/index.min.js";
-    async function loaded(reader) {  
-        const app = await client("https://anistaluqdar-vehicle-recognizer.hf.space/--replicas/86pln/");
-        const response = await app.predict("/predict", [reader.result]);
-        console.log(response);
-        const label = response['data'][0]['label'];
-        results.innerHTML = `<br/> <img src = "${reader.result}" width="500"> <p>${label}</p>`;
-    }
-    function read() {
-        const reader = new FileReader();
-        reader.addEventListener('load', () => loaded(reader))
-        reader.readAsDataURL(photo.files[0]);
-    }
-    photo.addEventListener('input', read);
-</script>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vehicle Recognizer</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 20px;
+        }
+        #photo {
+            margin-bottom: 10px;
+        }
+        #results {
+            margin-top: 20px;
+            text-align: center;
+        }
+        #loading {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <input id="photo" type="file">
+    <div id="results"></div>
+    <div id="loading">Loading...</div>
+    <script type="module">
+        import { client } from "https://cdn.jsdelivr.net/npm/@gradio/client@0.1.4/dist/index.min.js";
+        
+        const photoInput = document.getElementById('photo');
+        const resultsContainer = document.getElementById('results');
+        const loadingIndicator = document.getElementById('loading');
+        
+        async function loaded(reader) {  
+            try {
+                loadingIndicator.style.display = 'block';
+                const app = await client("https://anistaluqdar-vehicle-recognizer.hf.space/--replicas/86pln/");
+                const response = await app.predict("/predict", [reader.result]);
+                console.log(response);
+                const label = response['data'][0]['label'];
+                resultsContainer.innerHTML = `<br/> <img src="${reader.result}" width="500"> <p>${label}</p>`;
+            } catch (error) {
+                console.error('Error predicting:', error);
+                resultsContainer.innerHTML = '<p>Error predicting. Please try again.</p>';
+            } finally {
+                loadingIndicator.style.display = 'none';
+            }
+        }
+
+        function read() {
+            const reader = new FileReader();
+            reader.addEventListener('load', () => loaded(reader));
+            reader.readAsDataURL(photoInput.files[0]);
+        }
+
+        photoInput.addEventListener('input', read);
+    </script>
+</body>
+</html>
