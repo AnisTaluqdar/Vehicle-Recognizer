@@ -45,4 +45,4 @@ I deployed to model to HuggingFace Spaces Gradio App. The implementation can be 
 <img src = "Screenshot.png" width="700" height="350">
 
 # API integration with GitHub Pages
-The deployed model API is integrated [here](https://vehicle-recognizer.duckdns.org/) in GitHub Pages Website. 
+The deployed model API is integrated [here](http://anistaluqdar.duckdns.org/Vehicle-Recognizer/) in GitHub Pages Website. 
