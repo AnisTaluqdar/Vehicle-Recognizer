@@ -10,8 +10,10 @@ layout: page
     async function loaded(reader) {  
         const app = await client("https://anistaluqdar-vehicle-recognizer.hf.space/--replicas/86pln/");
         const response = await app.predict("/predict", [reader.result]);
-        const json = await response.json();
-        const label = json['data'][0]['label'];
+        console.log(response);
+        // const json = await response.json();
+        // const label = json['data'][0]['label'];
+        const label = response['data'][0]['label'];
         results.innerHTML = `<br/> <img src = "${reader.result}" width="500"> <p>${label}</p>`;
     }
     function read() {
